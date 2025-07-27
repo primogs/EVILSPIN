@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private List<String> options = new ArrayList<>();
     private SharedPreferences sharedPreferences;
     private boolean wheelIsSpinning = false;
+    private Random random = new Random(System.currentTimeMillis());
 
     private static final int SETTINGS_REQUEST_CODE = 100;
 
@@ -132,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
         
         int minSpin = sharedPreferences.getInt("min_wheel_spin", 720);
         int maxSpin = minSpin + 1080;
-        Random random = new Random();
         float targetRotation = wheelView.getRotation() + random.nextInt(maxSpin - minSpin) + minSpin;
 
         int duration = sharedPreferences.getInt("wheel_speed", 5000); // Increased duration for a slower finish
